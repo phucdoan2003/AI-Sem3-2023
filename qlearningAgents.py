@@ -66,10 +66,10 @@ class QLearningAgent(ReinforcementAgent):
         "*** YOUR CODE HERE ***"
         legalActions = self.getLegalActions(state)
         if len(legalActions) > 0:
-          qValue = []
-          for action in legalActions:
-              qValue.append(self.getQValue(state, action))
-          return max(qValue)
+            qValue = []
+            for action in legalActions:
+                qValue.append(self.getQValue(state, action))
+            return max(qValue)
         else:
             return 0.0
         util.raiseNotDefined()
@@ -84,6 +84,8 @@ class QLearningAgent(ReinforcementAgent):
         seenActions = []
         seenQValues = []
         unseenActions = []
+        if len(self.getLegalActions(state)) == 0:
+            return None
         for action in self.getLegalActions(state):
             qValue = self.getQValue(state, action)
             if qValue == 0:
@@ -91,13 +93,23 @@ class QLearningAgent(ReinforcementAgent):
             else:
                 seenActions.append(action)
                 seenQValues.append(qValue)
-        if all(x < 0 for x in seenQValues) and len(unseenActions) > 0:
-            return random.choice(unseenActions)
-        else:
-            if len(seenActions) > 0:
-              return seenActions[seenQValues.index(max(seenQValues))]
+        # if all(x < 0 for x in seenQValues):
+        #     if len(unseenActions) > 0:
+        #         return random.choice(unseenActions)
+        # elif len(seenActions) > 0:
+        #     return seenActions[seenQValues.index(max(seenQValues))]
+        # else:
+        #     return None
+        if len(seenActions) > 0:
+            if all(x < 0 for x in seenQValues):
+                if len(unseenActions) > 0:
+                    return random.choice(unseenActions)
+                else:
+                    return seenActions[seenQValues.index(max(seenQValues))]
             else:
-              return None
+                return seenActions[seenQValues.index(max(seenQValues))]
+        else:
+            return random.choice(unseenActions)
         
         util.raiseNotDefined()
 
