@@ -131,7 +131,7 @@ class QLearningAgent(ReinforcementAgent):
         if util.flipCoin(self.epsilon):
             action = random.choice(legalActions)
         else:
-            action = self.computeActionFromQValues(state)
+            action = self.getPolicy(state)
 
         return action
         util.raiseNotDefined()
@@ -211,7 +211,6 @@ class ApproximateQAgent(PacmanQAgent):
           where * is the dotProduct operator
         """
         "*** YOUR CODE HERE ***"
-        
         return numpy.dot(self.getWeights(), self.featExtractor.getFeatures(state, action))  
         util.raiseNotDefined()
 
@@ -223,9 +222,9 @@ class ApproximateQAgent(PacmanQAgent):
         
         features = self.featExtractor.getFeatures(state, action)
         diff = (reward + self.discount * self.getValue(nextState)) - self.getQValue(state, action)
-        stateActionPair = list(features.keys())
-        print(features)
-        print("\n")
+        # stateActionPair = list(features.keys())
+        # print(features)
+        # print("\n")
         for feature in features:
             self.weights[feature] = self.weights[feature] + self.alpha * diff * features[feature]
         return

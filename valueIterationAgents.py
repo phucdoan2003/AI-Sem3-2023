@@ -111,7 +111,7 @@ class ValueIterationAgent(ValueEstimationAgent):
         bestQValue = float('-inf')
         bestAction = None
         for action in self.mdp.getPossibleActions(state):
-            qValue = self.computeQValueFromValues(state, action)
+            qValue = self.getQValue(state, action)
             if qValue > bestQValue:
                 bestQValue = qValue
                 bestAction = action
