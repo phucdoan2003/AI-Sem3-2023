@@ -1,19 +1,16 @@
 # Team Information
 
-**Course:** _[fill your course code and name]_
+**Course:** COSC2129 Artificial Intelligence
 
-**Semester:** Semester 3, 2022
+**Semester:** Semester 3, 2023
 
-**Instructor:** _[name of your instructor]_
+**Instructor:** Thuy Nguyen
 
-**Team name:** _[replace this with team name in plan text]_
+**Team name:** Team 10
 
 **Team members:**
 
-* Student 1's Student number - Full Name - Student email 
-* Student 2's Student number - Full Name - Student email 
-* Student 3's Student number - Full Name - Student email 
+* s3926377 - Doan Tran Thien Phuc - s3926377@rmit.edu.vn
+* s3911365 - Vo Ngoc Diem Tien - s3911365@rmit.edu.vn
+* s3852304 - Doan Chanh Thong - s3852304@rmit.edu.vn
 
-Replace the lines above with the correct details of members. Delete or add lines as needed.
-
-Student numbers should just be the **numbers**.
